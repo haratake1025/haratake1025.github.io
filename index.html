@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="wamodern">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>第2回 ネイバーズ江坂文化祭｜6.20 SAT</title>
+<meta name="description" content="2026年6月20日(土) 13:00〜 ネイバーズ江坂1stにて開催！LOOSE & ART & FUN" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Hachi+Maru+Pop&family=Yomogi&family=Klee+One:wght@400;600&family=Zen+Maru+Gothic:wght@400;500;700&family=Kosugi+Maru&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --radius: 20px;
+    /* default = 和モダン（A配色・Cテイスト） */
+    --bg:#f6f1e6; --bg-outer:#ece3d1; --ink:#2b3a55; --muted:#9a9080;
+    --primary:#d4503e; --primary-deep:#b53f30;
+    --a1:#3f5a78; --a2:#c8a45a; --a3:#c8a45a; --card:#fffdf7;
+    --fh:'Mochiy Pop One'; --fb:'Zen Maru Gothic';
+    /* エリア色は全体テーマと独立して固定 */
+    --stage:#d4503e; --food:#3a6ea5; --art:#8a6aa0; --relax:#5e8c6a;
+  }
+  [data-theme="wamodern"]{
+    --bg:#f6f1e6; --bg-outer:#ece3d1; --ink:#2b3a55; --muted:#9a9080;
+    --primary:#d4503e; --primary-deep:#b53f30;
+    --a1:#3f5a78; --a2:#c8a45a; --a3:#c8a45a; --card:#fffdf7;
+    --fh:'Mochiy Pop One'; --fb:'Zen Maru Gothic';
+  }
+  [data-theme="kami"]{
+    --bg:#f3efe5; --bg-outer:#e6dfce; --ink:#32302b; --muted:#a39c8d;
+    --primary:#cf4b32; --primary-deep:#b23a24;
+    --a1:#6f6a5e; --a2:#d6b24a; --a3:#d6b24a; --card:#fbf8f0;
+    --fh:'Mochiy Pop One'; --fb:'Zen Maru Gothic';
+  }
+  [data-theme="coral"]{
+    --bg:#fbf6f1; --bg-outer:#efe5da; --ink:#4a4039; --muted:#a99e95;
+    --primary:#e2917a; --primary-deep:#cf6f56;
+    --a1:#7fa088; --a2:#e7c08a; --a3:#e7c08a; --card:#ffffff;
+    --fh:'Mochiy Pop One'; --fb:'Zen Maru Gothic';
+  }
+  [data-theme="night"]{
+    --bg:#202a44; --bg-outer:#161d33; --ink:#f2ecdd; --muted:#9aa3bd;
+    --primary:#ef9d4a; --primary-deep:#e3823a;
+    --a1:#e3695a; --a2:#f0b35e; --a3:#f0b35e; --card:#2b3656;
+    --fh:'Mochiy Pop One'; --fb:'Zen Maru Gothic';
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html,body{ -webkit-text-size-adjust:100%; }
+  body{
+    font-family:var(--fb),system-ui,sans-serif;
+    color:var(--ink);
+    background:
+      radial-gradient(circle at 12% 8%, color-mix(in srgb,var(--primary) 22%, transparent), transparent 16%),
+      radial-gradient(circle at 88% 22%, color-mix(in srgb,var(--a1) 24%, transparent), transparent 14%),
+      radial-gradient(circle at 78% 86%, color-mix(in srgb,var(--a2) 24%, transparent), transparent 16%),
+      var(--bg-outer);
+    background-attachment:fixed;
+    min-height:100vh;
+    display:flex; justify-content:center;
+    line-height:1.7;
+    transition:background .4s ease, color .4s ease;
+  }
+  .page{
+    width:100%; max-width:460px;
+    background:var(--bg);
+    min-height:100vh;
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 0 60px rgba(0,0,0,.10);
+    padding-bottom:0;
+  }
+
+  /* ---------- decorations ---------- */
+  .deco{ position:absolute; pointer-events:none; user-select:none; z-index:0; }
+  body.deco-off .deco{ display:none; }
+  .dot{ border-radius:50%; }
+
+  /* ---------- 三角旗ガーランド ---------- */
+  .garland{
+    position:relative; z-index:3;
+    display:flex; width:100%; height:26px;
+    border-top:4px solid var(--ink);
+    transform-origin:top center;
+    animation:sway 5s ease-in-out infinite;
+  }
+  .garland i{
+    flex:1 1 0; height:22px;
+    clip-path:polygon(0 0, 100% 0, 50% 100%);
+  }
+  .garland i:nth-child(5n+1){ background:var(--primary); }
+  .garland i:nth-child(5n+2){ background:var(--a1); }
+  .garland i:nth-child(5n+3){ background:var(--a3); }
+  .garland i:nth-child(5n+4){ background:var(--a2); }
+  .garland i:nth-child(5n+5){ background:var(--primary-deep); }
+  .garland.flip{ transform:rotate(180deg); animation-name:sway-rev; }
+
+  /* ---------- 提灯 ちょうちん ---------- */
+  .lantern{
+    position:absolute; z-index:2; width:34px; top:-4px;
+    transform-origin:top center;
+    animation:swing 4s ease-in-out infinite;
+  }
+  .lantern .body{
+    height:42px; border-radius:50% / 42%;
+    background:linear-gradient(180deg, color-mix(in srgb,var(--lc) 78%, #fff) , var(--lc));
+    border:2px solid color-mix(in srgb,var(--lc) 55%, #000 12%);
+    position:relative;
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,.25);
+  }
+  .lantern .body::before, .lantern .body::after{
+    content:''; position:absolute; left:50%; transform:translateX(-50%);
+    width:16px; height:5px; background:#3a3a3a; border-radius:2px;
+  }
+  .lantern .body::before{ top:-4px; }
+  .lantern .body::after{ bottom:-4px; }
+  .lantern .ribs{
+    position:absolute; inset:5px 4px;
+    background:repeating-linear-gradient(180deg, transparent 0 6px, rgba(0,0,0,.10) 6px 7px);
+    border-radius:50% / 42%;
+  }
+  .lantern .tail{
+    width:3px; height:9px; margin:1px auto 0;
+    background:color-mix(in srgb,var(--lc) 55%, #000 12%);
+  }
+  .lantern::before{ content:''; position:absolute; top:-4px; left:50%; width:2px; height:8px; background:#3a3a3a; transform:translateX(-50%); }
+  .lantern.l1{ left:14px; --lc:var(--primary-deep); animation-delay:-1.2s; }
+  .lantern.l2{ right:14px; --lc:var(--a3); animation-delay:-.4s; }
+
+  @keyframes sway{ 0%,100%{ transform:rotate(-.6deg); } 50%{ transform:rotate(.6deg); } }
+  @keyframes sway-rev{ 0%,100%{ transform:rotate(180.6deg); } 50%{ transform:rotate(179.4deg); } }
+  @keyframes swing{ 0%,100%{ transform:rotate(-6deg); } 50%{ transform:rotate(6deg); } }
+  @keyframes floaty{ 0%,100%{ transform:translateY(0) rotate(var(--r,0deg)); } 50%{ transform:translateY(-7px) rotate(var(--r,0deg)); } }
+  .float{ animation:floaty 3.5s ease-in-out infinite; }
+  @media (prefers-reduced-motion:reduce){ .garland,.lantern,.float,.hero::before{ animation:none !important; } }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative; z-index:1;
+    padding:48px 26px 46px;
+    text-align:center;
+    background:
+      linear-gradient(180deg, color-mix(in srgb,var(--primary) 16%, var(--bg)) 0%, var(--bg) 100%);
+    border-bottom:3px dashed color-mix(in srgb,var(--primary) 45%, var(--bg));
+    overflow:hidden;
+  }
+  /* 後光（サンバースト） */
+  .hero::before{
+    content:''; position:absolute; z-index:-1;
+    top:42px; left:50%; width:560px; height:560px;
+    transform:translateX(-50%);
+    background:repeating-conic-gradient(from 0deg at 50% 50%,
+      color-mix(in srgb,var(--primary) 38%, transparent) 0deg 7deg,
+      transparent 7deg 14deg);
+    opacity:.16; pointer-events:none;
+    animation:spin 80s linear infinite;
+  }
+  @keyframes spin{ to{ transform:translateX(-50%) rotate(360deg); } }
+  .hero .edition{
+    display:inline-flex; align-items:center; gap:6px;
+    font-family:var(--fh); font-size:13px; letter-spacing:.06em;
+    color:#fff; background:var(--primary-deep);
+    padding:6px 16px; border-radius:999px;
+    box-shadow:0 4px 0 color-mix(in srgb,var(--primary-deep) 60%, #000 12%);
+  }
+  .hero h1{
+    font-family:var(--fh);
+    font-weight:400;
+    font-size:clamp(30px,9.4vw,40px);
+    line-height:1.28;
+    margin:18px 0 6px;
+    color:var(--ink);
+    text-shadow:2px 3px 0 #fff, 4px 6px 0 color-mix(in srgb,var(--a2) 45%, transparent);
+  }
+  .hero h1 small{ display:block; font-size:.46em; color:var(--ink); text-shadow:none; letter-spacing:.04em; margin-top:8px; }
+  .tagline{
+    font-family:var(--fh); font-size:14px; letter-spacing:.14em;
+    color:var(--primary-deep); margin-top:14px;
+  }
+  .tagsub{ font-size:12.5px; color:var(--muted); margin-top:3px; }
+
+  .info-card{
+    position:relative; z-index:1;
+    margin:26px 28px 0;
+    background:var(--card);
+    border:2.5px solid var(--ink);
+    border-radius:var(--radius);
+    padding:22px 18px;
+    box-shadow:5px 6px 0 color-mix(in srgb,var(--primary) 55%, var(--bg));
+    text-align:center;
+  }
+  /* チケットの切り込み */
+  .info-card::before, .info-card::after{
+    content:''; position:absolute; top:50%; width:24px; height:24px;
+    border-radius:50%; background:var(--bg);
+    border:2.5px solid var(--ink);
+    transform:translateY(-50%); z-index:2;
+  }
+  .info-card::before{ left:-14px; }
+  .info-card::after{ right:-14px; }
+  /* 入場無料スタンプ */
+  .stamp{
+    position:absolute; z-index:3; top:-16px; right:-6px;
+    width:62px; height:62px; border-radius:50%;
+    display:grid; place-items:center; text-align:center;
+    background:var(--card);
+    border:2.5px dashed var(--primary-deep);
+    color:var(--primary-deep);
+    font-family:var(--fh); font-size:13px; line-height:1.15;
+    transform:rotate(11deg);
+    box-shadow:2px 3px 0 color-mix(in srgb,var(--primary) 45%, var(--bg));
+  }
+  .info-card .when{
+    font-family:var(--fh);
+    font-size:clamp(26px,8vw,34px);
+    color:var(--ink); line-height:1.1;
+  }
+  .info-card .when .sat{ color:var(--primary-deep); }
+  .info-card .when .yr{ display:block; font-size:14px; color:var(--muted); letter-spacing:.1em; margin-bottom:6px; font-family:var(--fb); }
+  .info-card .time-pill{
+    display:inline-block; margin-top:12px;
+    font-family:var(--fh); font-size:18px;
+    background:var(--a3); color:#5a4a2e;
+    padding:5px 18px; border-radius:999px;
+    transform:rotate(-2deg);
+  }
+  .info-card .venue{ margin-top:14px; font-size:15px; }
+  .info-card .venue b{ color:var(--primary-deep); font-size:16px; }
+
+  /* ---------- nav chips ---------- */
+  .chips{
+    display:grid; grid-template-columns:1fr 1fr; gap:9px;
+    padding:22px 22px 4px; position:relative; z-index:1;
+  }
+  .chips a{
+    text-decoration:none; font-size:13px; font-weight:700;
+    color:var(--ink); text-align:center;
+    background:var(--card);
+    border:2px solid color-mix(in srgb,var(--ink) 30%, var(--bg));
+    padding:9px 12px; border-radius:14px;
+    transition:transform .15s ease, background .2s;
+  }
+  .chips a:active{ transform:scale(.94); }
+
+  /* ---------- section ---------- */
+  section.block{ position:relative; z-index:1; padding:30px 22px 6px; }
+  .sec-head{ display:flex; align-items:center; gap:10px; margin-bottom:6px; }
+  .sec-head .ic{
+    width:42px; height:42px; flex:0 0 42px;
+    display:grid; place-items:center; font-size:22px;
+    background:var(--card); border:2.5px solid var(--ink);
+    border-radius:14px; transform:rotate(-4deg);
+    box-shadow:3px 3px 0 color-mix(in srgb,var(--a1) 60%, var(--bg));
+  }
+  .sec-head .tt{ font-family:var(--fh); font-size:21px; color:var(--ink); line-height:1.2; }
+  .sec-head .tt small{ display:block; font-family:var(--fb); font-size:11px; letter-spacing:.18em; color:var(--muted); font-weight:700; }
+  .sec-note{ font-size:12.5px; color:var(--muted); margin:8px 2px 16px; }
+  .sec-head.centered{ flex-direction:column; justify-content:center; text-align:center; gap:2px; margin-bottom:14px; }
+  .sec-head.centered .tt small{ letter-spacing:.2em; }
+
+  /* ---------- お願い ---------- */
+  .ask-acc{ }
+  .ask-summary{
+    cursor:pointer; list-style:none; user-select:none;
+    margin-bottom:0; padding:6px 4px;
+    border-radius:16px;
+    transition:background .2s;
+  }
+  .ask-summary::-webkit-details-marker{ display:none; }
+  .ask-summary:active{ background:color-mix(in srgb,var(--primary) 12%, transparent); }
+  .ask-summary .chev{
+    margin-left:auto; font-size:14px; color:var(--primary-deep);
+    background:color-mix(in srgb,var(--primary) 18%, var(--card));
+    width:30px; height:30px; border-radius:50%;
+    display:grid; place-items:center;
+    transition:transform .3s ease;
+  }
+  .ask-acc[open] .ask-summary .chev{ transform:rotate(180deg); }
+  .tap-hint{
+    display:inline-block; font-size:11px; font-weight:700;
+    color:var(--primary-deep);
+    background:color-mix(in srgb,var(--primary) 16%, var(--card));
+    padding:1px 9px; border-radius:999px; margin-left:4px;
+  }
+  .ask-acc[open] .tap-hint{ display:none; }
+  .ask{ display:grid; gap:14px; animation:reveal .35s ease; }
+  @keyframes reveal{ from{ opacity:0; transform:translateY(-6px); } to{ opacity:1; transform:translateY(0); } }
+  .ask .card{
+    display:flex; gap:14px;
+    background:var(--card);
+    border:2.5px solid var(--ink);
+    border-radius:var(--radius);
+    padding:15px 16px;
+    box-shadow:4px 5px 0 color-mix(in srgb,var(--accent) 55%, var(--bg));
+  }
+  .ask .card:nth-child(1){ --accent:var(--primary); }
+  .ask .card:nth-child(2){ --accent:var(--a1); }
+  .ask .card:nth-child(3){ --accent:var(--a2); }
+  .ask .card:nth-child(4){ --accent:var(--a3); }
+  .ask .emoji{
+    width:46px; height:46px; flex:0 0 46px;
+    display:grid; place-items:center; font-size:26px;
+    background:color-mix(in srgb,var(--accent) 30%, var(--card));
+    border-radius:50%;
+  }
+  .ask .txt h3{ font-family:var(--fh); font-size:16px; font-weight:400; margin-bottom:4px; }
+  .ask .txt p{ font-size:13px; color:color-mix(in srgb,var(--ink) 88%, var(--muted)); }
+
+  /* ---------- program ---------- */
+  /* ---------- timetable (festival grid) ---------- */
+  .tt-warn{ font-size:11.5px; color:var(--primary-deep); font-weight:700; margin:-10px 2px 14px; }
+  .tt-scroll{
+    overflow-x:auto; overflow-y:hidden;
+    -webkit-overflow-scrolling:touch;
+    padding-bottom:8px;
+    margin:0 -4px;
+    scrollbar-width:thin;
+  }
+  .tt-grid{
+    display:grid;
+    grid-template-columns:46px repeat(4, 116px);
+    grid-template-rows:34px repeat(24, 24px);
+    min-width:510px;
+    gap:0;
+    position:relative;
+  }
+  .tt-corner{
+    grid-column:1; grid-row:1;
+    display:grid; place-items:center;
+    font-family:var(--fh); font-size:11px; color:var(--muted);
+    position:sticky; left:0; z-index:6; background:var(--bg);
+    border-right:1.5px solid color-mix(in srgb,var(--ink) 16%, transparent);
+  }
+  .tt-timebg{
+    grid-column:1; grid-row:2/26;
+    position:sticky; left:0; z-index:3; background:var(--bg);
+    border-right:1.5px solid color-mix(in srgb,var(--ink) 16%, transparent);
+  }
+  .tt-head{
+    grid-row:1;
+    display:grid; place-items:center; text-align:center;
+    font-family:var(--fh); font-size:13px; color:#fff;
+    border-radius:12px 12px 0 0; margin:0 2px;
+  }
+  .tt-head.h-stage{ grid-column:2; background:var(--stage); }
+  .tt-head.h-food{ grid-column:3; background:var(--food); }
+  .tt-head.h-art{ grid-column:4; background:var(--art); }
+  .tt-head.h-relax{ grid-column:5; background:var(--relax); }
+  .tt-time{
+    grid-column:1;
+    display:flex; align-items:flex-start; justify-content:flex-end;
+    padding:2px 7px 0 0;
+    font-size:11px; font-weight:700; color:var(--muted);
+    transform:translateY(-7px);
+    position:sticky; left:0; z-index:4; background:transparent;
+  }
+  .tt-time.end{ align-items:flex-end; transform:translateY(8px); }
+  .tt-lines{ display:flex; flex-direction:column; pointer-events:none; }
+  .tt-lines i{ flex:1; border-top:1px dotted color-mix(in srgb,var(--ink) 12%, transparent); }
+  .tt-lines i:first-child{ border-top:2px solid color-mix(in srgb,var(--ink) 30%, transparent); }
+  .tt-lines i:nth-child(4n+1){ border-top:1.5px solid color-mix(in srgb,var(--ink) 22%, transparent); }
+  .ev{
+    margin:2px; padding:4px 7px;
+    border-radius:11px;
+    font-size:11.5px; font-weight:700; line-height:1.18;
+    color:#3a2f38;
+    display:flex; flex-direction:column; justify-content:center;
+    overflow:hidden;
+    border:2px solid rgba(0,0,0,.12);
+    box-shadow:2px 2px 0 rgba(0,0,0,.08);
+  }
+  .ev.short{ flex-direction:row; align-items:center; justify-content:center; font-family:var(--fh); font-size:11px; }
+  .ev small{ display:block; font-weight:700; font-size:9.5px; opacity:.72; margin-top:1px; font-family:var(--fb); }
+  .ev.c1,.ev.c2,.ev.c3,.ev.c4,.ev.c5,.ev.c6{
+    background:color-mix(in srgb,var(--stage) 22%, #fff);
+    border-color:color-mix(in srgb,var(--stage) 34%, #fff);
+  }
+  .ev.allday{
+    align-items:center; text-align:center;
+    background:repeating-linear-gradient(45deg, #fff, #fff 9px, color-mix(in srgb,var(--ac) 14%, #fff) 9px, color-mix(in srgb,var(--ac) 14%, #fff) 18px);
+    border-color:color-mix(in srgb,var(--ac) 40%, #fff);
+    color:color-mix(in srgb,var(--ink) 80%, var(--ac));
+  }
+  .ev.allday.food{ --ac:var(--food); }
+  .ev.allday.art{ --ac:var(--art); }
+  .ev.allday.relax{ --ac:var(--relax); }
+  .ev .adlabel{
+    display:inline-block; font-family:var(--fh); font-size:10px;
+    color:#fff; background:var(--ac);
+    padding:2px 9px; border-radius:999px; margin-bottom:7px;
+  }
+  .ev.relax-slot{
+    align-items:center; text-align:center;
+    background:color-mix(in srgb,var(--relax) 30%, #fff);
+    border-color:color-mix(in srgb,var(--relax) 50%, #fff);
+    color:color-mix(in srgb,var(--ink) 78%, var(--relax));
+  }
+
+  /* ---------- map ---------- */
+  .map-wrap{
+    background:var(--card); border:2.5px solid var(--ink);
+    border-radius:var(--radius); padding:12px;
+    box-shadow:4px 5px 0 color-mix(in srgb,var(--a3) 60%, var(--bg));
+  }
+  .map-scroll{
+    overflow-x:auto; overflow-y:hidden;
+    -webkit-overflow-scrolling:touch;
+    border-radius:14px;
+    background:color-mix(in srgb,var(--ink) 5%, var(--card));
+  }
+  .map-scroll img{ display:block; height:340px; width:auto; max-width:none; border-radius:14px; }
+  .map-hint{ font-size:12px; color:var(--muted); text-align:center; margin-top:9px; }
+
+  /* ---------- event detail modal ---------- */
+  .ev-modal{ position:fixed; inset:0; z-index:200; display:none; }
+  .ev-modal.is-open{ display:block; }
+  .ev-modal__backdrop{
+    position:absolute; inset:0;
+    background:color-mix(in srgb,var(--ink) 55%, transparent);
+    backdrop-filter:blur(2px);
+    animation:evfade .2s ease;
+  }
+  .ev-modal__sheet{
+    position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+    width:calc(100% - 32px); max-width:420px;
+    max-height:82vh; overflow-y:auto;
+    background:var(--card); color:var(--ink);
+    border-radius:26px;
+    border-top:3px solid var(--ec, var(--primary-deep));
+    padding:18px 22px 30px;
+    box-shadow:0 12px 48px rgba(0,0,0,.28);
+    animation:evslide .26s cubic-bezier(.2,.9,.3,1.1);
+  }
+  .ev-modal[data-cat="stage"]{ --ec:var(--primary-deep); }
+  .ev-modal[data-cat="food"]{ --ec:var(--food); }
+  .ev-modal[data-cat="art"]{ --ec:var(--art); }
+  .ev-modal[data-cat="relax"]{ --ec:var(--relax); }
+  @keyframes evfade{ from{opacity:0} to{opacity:1} }
+  @keyframes evslide{ from{transform:translate(-50%,-44%); opacity:.4} to{transform:translate(-50%,-50%); opacity:1} }
+  .ev-modal__x{
+    position:absolute; top:14px; right:16px;
+    width:34px; height:34px; border:none; cursor:pointer;
+    background:color-mix(in srgb,var(--ink) 8%, var(--card));
+    color:var(--ink); border-radius:50%; font-size:14px;
+  }
+  .ev-modal__head{ display:flex; align-items:center; gap:10px; margin:6px 0 4px; }
+  .ev-modal__badge{
+    font-family:var(--fh); font-size:13px; color:#fff;
+    background:var(--ec, var(--primary-deep));
+    padding:4px 13px; border-radius:999px;
+  }
+  .ev-modal__time{ font-size:13px; font-weight:700; color:var(--muted); }
+  .ev-modal__title{ font-family:var(--fh); font-size:21px; font-weight:400; margin:6px 0 12px; color:var(--ink); }
+  .ev-modal__photo{
+    height:140px; display:grid; place-items:center;
+    background:repeating-linear-gradient(45deg, color-mix(in srgb,var(--ec,var(--primary)) 7%, var(--card)), color-mix(in srgb,var(--ec,var(--primary)) 7%, var(--card)) 14px, color-mix(in srgb,var(--ec,var(--primary)) 14%, var(--card)) 14px, color-mix(in srgb,var(--ec,var(--primary)) 14%, var(--card)) 28px);
+    border:2px dashed color-mix(in srgb,var(--ec,var(--primary-deep)) 50%, var(--card));
+    border-radius:16px; color:var(--muted); font-size:14px; font-weight:700;
+    margin-bottom:14px;
+  }
+  .ev-modal__by{ font-size:13.5px; font-weight:700; color:var(--ec, var(--primary-deep)); margin-bottom:8px; }
+  .ev-modal__desc{ font-size:14px; line-height:1.75; color:color-mix(in srgb,var(--ink) 88%, var(--muted)); }
+
+  /* ---------- ステージ詳細 cards ---------- */
+  .detail-list{ display:grid; gap:14px; margin-top:14px; }
+  .detail-grp-head{
+    font-family:var(--fh); font-size:17px; font-weight:400;
+    color:#fff; padding:9px 16px; border-radius:12px;
+    margin-top:8px;
+  }
+  .detail-grp-head:first-child{ margin-top:0; }
+  .detail-grp-head[data-cat="stage"]{ background:var(--primary-deep); }
+  .detail-grp-head[data-cat="food"]{ background:var(--food); }
+  .detail-grp-head[data-cat="art"]{ background:var(--art); }
+  .detail-grp-head[data-cat="relax"]{ background:var(--relax); }
+  .detail-card{
+    display:flex; gap:0; flex-direction:column;
+    background:var(--card);
+    border:2.5px solid var(--ink);
+    border-radius:var(--radius); overflow:hidden;
+    border-left:7px solid var(--ec, var(--primary-deep));
+    box-shadow:4px 5px 0 color-mix(in srgb,var(--ec,var(--primary)) 45%, var(--bg));
+    transition:transform .12s ease;
+  }
+  .detail-card:active{ transform:translateY(2px); }
+  .detail-card[data-cat="stage"]{ --ec:var(--primary-deep); }
+  .detail-card[data-cat="food"]{ --ec:var(--food); }
+  .detail-card[data-cat="art"]{ --ec:var(--art); }
+  .detail-card[data-cat="relax"]{ --ec:var(--relax); }
+  .detail-card__photo{
+    height:96px; display:grid; place-items:center;
+    background:repeating-linear-gradient(45deg, color-mix(in srgb,var(--ec,var(--primary)) 7%, var(--card)), color-mix(in srgb,var(--ec,var(--primary)) 7%, var(--card)) 12px, color-mix(in srgb,var(--ec,var(--primary)) 14%, var(--card)) 12px, color-mix(in srgb,var(--ec,var(--primary)) 14%, var(--card)) 24px);
+    color:var(--muted); font-size:13px; font-weight:700;
+    border-bottom:2px dashed color-mix(in srgb,var(--ec,var(--primary-deep)) 40%, var(--card));
+  }
+  .detail-card__body{ padding:13px 15px 15px; }
+  .detail-card__top{ display:flex; align-items:center; gap:9px; margin-bottom:5px; }
+  .detail-card__badge{
+    font-family:var(--fh); font-size:12px; color:#fff;
+    background:var(--ec, var(--primary-deep)); padding:3px 11px; border-radius:999px;
+  }
+  .detail-card__time{ font-size:12.5px; font-weight:700; color:var(--muted); }
+  .detail-card__title{ font-family:var(--fh); font-size:18px; font-weight:400; margin:2px 0 6px; color:var(--ink); }
+  .detail-card__by{ font-size:13px; font-weight:700; color:var(--ec, var(--primary-deep)); margin-bottom:5px; }
+  .detail-card__desc{ font-size:13.5px; line-height:1.7; color:color-mix(in srgb,var(--ink) 88%, var(--muted)); }
+
+  /* ---------- coming soon ---------- */
+  .soon{
+    text-align:center;
+    background:repeating-linear-gradient(45deg, var(--card), var(--card) 14px, color-mix(in srgb,var(--primary) 9%, var(--card)) 14px, color-mix(in srgb,var(--primary) 9%, var(--card)) 28px);
+    border:2.5px dashed var(--primary-deep);
+    border-radius:var(--radius);
+    padding:34px 20px;
+  }
+  .soon .big{ font-family:var(--fh); font-size:22px; color:var(--primary-deep); }
+  .soon p{ font-size:13px; color:var(--muted); margin-top:8px; }
+
+  /* ---------- footer ---------- */
+  footer{
+    position:relative; z-index:1;
+    margin-top:0; padding:26px 22px 26px;
+    text-align:center;
+    background:linear-gradient(180deg, var(--bg) 0%, color-mix(in srgb,var(--primary) 16%, var(--bg)) 100%);
+    border-top:3px dashed color-mix(in srgb,var(--primary) 45%, var(--bg));
+  }
+  footer .ttl{ font-family:var(--fh); font-size:18px; color:var(--primary-deep); }
+  footer .det{ font-size:14px; margin-top:8px; }
+  footer .heart{ font-family:var(--fh); font-size:15px; color:var(--primary-deep); margin-top:14px; letter-spacing:.04em; }
+  .foot-jump{ display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:20px; }
+  .foot-jump a{
+    display:flex; align-items:center; justify-content:center; gap:6px;
+    text-decoration:none; font-family:var(--fh); font-size:13px;
+    color:#fff; background:var(--primary-deep);
+    padding:12px 8px; border-radius:14px;
+    box-shadow:0 4px 0 color-mix(in srgb,var(--primary-deep) 55%, #000 16%);
+    transition:transform .12s ease;
+  }
+  .foot-jump a span{ font-size:15px; }
+  .foot-jump a:active{ transform:translateY(2px); box-shadow:0 2px 0 color-mix(in srgb,var(--primary-deep) 55%, #000 16%); }
+
+  /* ---------- sticky bottom nav ---------- */
+  .bottomnav{
+    position:fixed; bottom:14px; left:50%; transform:translateX(-50%);
+    z-index:50; display:flex; gap:6px;
+    background:var(--card);
+    border:2.5px solid var(--ink);
+    border-radius:999px; padding:6px;
+    box-shadow:0 8px 22px rgba(0,0,0,.18);
+    max-width:432px; width:calc(100% - 28px);
+  }
+  .bottomnav a{
+    flex:1; text-align:center; text-decoration:none;
+    font-size:11px; font-weight:700; color:var(--ink);
+    padding:7px 4px; border-radius:999px; line-height:1.3;
+    transition:background .2s;
+  }
+  .bottomnav a .bic{ display:block; font-size:18px; }
+  .bottomnav a:active{ background:color-mix(in srgb,var(--primary) 25%, var(--card)); }
+
+  @media (min-width:560px){
+    .page{ margin:24px 0; min-height:auto; border-radius:34px; padding-bottom:30px; }
+    .bottomnav{ position:sticky; bottom:18px; margin:0 auto; }
+  }
+</style>
+</head>
+<body style="background-color: rgb(255, 234, 242)">
+  <main class="page" data-screen-label="文化祭HP">
+
+    <div class="garland" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+
+    <!-- ===== HERO ===== -->
+    <header class="hero">
+      <div class="lantern l1" aria-hidden="true"><div class="body"><div class="ribs"></div></div><div class="tail"></div></div>
+      <div class="lantern l2" aria-hidden="true"><div class="body"><div class="ribs"></div></div><div class="tail"></div></div>
+      <span class="deco float" style="--r:-8deg;top:30px;right:30px;font-size:22px;">🎏</span>
+      <span class="deco float" style="--r:10deg;bottom:30px;left:24px;font-size:20px;">🎐</span>
+      <span class="deco float" style="--r:0deg;bottom:54px;right:22px;font-size:18px;">✿</span>
+      <span class="edition">🎪 第 2 回</span>
+      <h1>ネイバーズ江坂<br />文化祭</h1>
+      <p class="tagline">LOOSE &amp; ART &amp; FUN</p>
+      <p class="tagsub">ゆる〜い気持ちでお楽しみください</p>
+    </header>
+
+    <!-- ===== INFO CARD ===== -->
+    <div class="info-card">
+      <span class="stamp">入退場<br />自由</span>
+      <p class="when"><span class="yr">2026</span>6<small style="font-size:.6em">月</small>20<small style="font-size:.6em">日</small> <span class="sat">（土）</span></p>
+      <span class="time-pill">OPEN 13:00 〜</span>
+      <p class="venue">会場：<b>ネイバーズ江坂 1st</b></p>
+    </div>
+
+    <!-- ===== NAV CHIPS ===== -->
+    <nav class="chips">
+      <a href="#ask">👋 当日の楽しみ方</a>
+      <a href="#program">🎤 タイムテーブル</a>
+      <a href="#map">🗺️ エリアマップ</a>
+      <a href="#detail">✨ 詳細</a>
+    </nav>
+
+    <!-- ===== お願い ===== -->
+    <section class="block" id="ask">
+      <div class="sec-head">
+        <div class="ic">🎈</div>
+        <div class="tt">当日の楽しみ方<small>HOW TO ENJOY</small></div>
+      </div>
+      <p class="sec-note">楽しみ方と、楽しむ上での注意点です。みんなでルールを守って楽しみましょう🍡</p>
+      <div class="ask">
+        <div class="card">
+          <div class="emoji">👋</div>
+          <div class="txt">
+            <h3>途中参加・途中退出OK！</h3>
+            <p>自由参加なのでぜひ楽しんでね！ドタ参ウェルカム🙌</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="emoji">🤝</div>
+          <div class="txt">
+            <h3>友達作ろう</h3>
+            <p>江坂OB・OGも参加します！名札シールを配るので、知らない人とも気軽に話してみてね💬</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="emoji">🔊</div>
+          <div class="txt">
+            <h3>音量の調整にご協力を</h3>
+            <p>ギター・音楽など音が出る出し物は、状況によって主催者から音量調整をお願いする場合があります。その際はご協力をお願いします。</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="emoji">🪑</div>
+          <div class="txt">
+            <h3>設備・来場者への安全配慮</h3>
+            <p>ダンスなど動きの大きい出し物は事前にスペースを確保してください。テープや装飾を貼る際は壁・家具の傷や剥がれにご注意を。来場者の方も含め怪我のないよう気を配りながら進めてください。万が一、破損・汚損が発生した場合は必ず<b>コールセンター</b>へ先に連絡してから片付けをお願いします。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PROGRAM ===== -->
+    <section class="block" id="program">
+      <div class="sec-head">
+        <div class="ic">🎤</div>
+        <div class="tt">タイムテーブル<small>PROGRAM</small></div>
+      </div>
+      <p class="sec-note">タイムスケジュールは仮です。確定したら随時更新していきます🎶</p>
+
+      <div class="tt-scroll">
+        <div class="tt-grid">
+          <!-- header row -->
+          <div class="tt-corner">TIME</div>
+          <div class="tt-head h-stage">🎤 ステージ</div>
+          <div class="tt-head h-food">🍔 フード</div>
+          <div class="tt-head h-art">🎨 アート</div>
+          <div class="tt-head h-relax">💆 リラックス</div>
+
+          <!-- sticky TIME column backing (full height) -->
+          <div class="tt-timebg" aria-hidden="true"></div>
+
+          <!-- time labels (col 1, every 30min) -->
+          <div class="tt-time" style="grid-row:2">13:00</div>
+          <div class="tt-time" style="grid-row:4">13:30</div>
+          <div class="tt-time" style="grid-row:6">14:00</div>
+          <div class="tt-time" style="grid-row:8">14:30</div>
+          <div class="tt-time" style="grid-row:10">15:00</div>
+          <div class="tt-time" style="grid-row:12">15:30</div>
+          <div class="tt-time" style="grid-row:14">16:00</div>
+          <div class="tt-time" style="grid-row:16">16:30</div>
+          <div class="tt-time" style="grid-row:18">17:00</div>
+          <div class="tt-time" style="grid-row:20">17:30</div>
+          <div class="tt-time" style="grid-row:22">18:00</div>
+          <div class="tt-time" style="grid-row:24">18:30</div>
+          <div class="tt-time end" style="grid-row:25">19:00</div>
+
+          <!-- grid background lines (24 × 15min) -->
+          <div class="tt-lines" style="grid-column:2/6;grid-row:2/26" aria-hidden="true">
+            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          </div>
+
+          <!-- STAGE events (col 2) -->
+          <div class="ev c3 short" data-ev="open" style="grid-column:2;grid-row:3/4">🎀 開会式</div>
+          <div class="ev c2" data-ev="social" style="grid-column:2;grid-row:6/8">社交ダンス</div>
+          <div class="ev c4" data-ev="aco" style="grid-column:2;grid-row:10/12">好日屋上アコースティックLIVE</div>
+          <div class="ev c1" data-ev="dance" style="grid-column:2;grid-row:14/16">ネイバーズダンス部</div>
+          <div class="ev c5" data-ev="dj" style="grid-column:2;grid-row:18/22">DJ George<br />× ななみんフィットネス</div>
+          <div class="ev c6 short" data-ev="close" style="grid-column:2;grid-row:24/26">🎉 閉会式</div>
+
+          <!-- FOOD (col 3) all-day -->
+          <div class="ev allday food" data-ev="food" style="grid-column:3;grid-row:2/26">
+            <span class="adlabel">通し営業</span>
+            あおバーガー<br />カレー部<br />トーマス料理
+          </div>
+
+          <!-- ART (col 4) all-day -->
+          <div class="ev allday art" data-ev="art" style="grid-column:4;grid-row:2/26">
+            <span class="adlabel">通し展示</span>
+            あけみちゃん<br />あーりゃん
+          </div>
+
+          <!-- RELAX (col 5) hourly 15-min slots -->
+          <div class="ev relax-slot" data-ev="relax" style="grid-column:5;grid-row:6/7">ほぐしの満州</div>
+          <div class="ev relax-slot" data-ev="relax" style="grid-column:5;grid-row:10/11">ほぐしの満州</div>
+          <div class="ev relax-slot" data-ev="relax" style="grid-column:5;grid-row:14/15">ほぐしの満州</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== MAP ===== -->
+    <section class="block" id="map">
+      <div class="sec-head">
+        <div class="ic">🗺️</div>
+        <div class="tt">エリアマップ<small>AREA MAP</small></div>
+      </div>
+      <p class="sec-note">会場の各エリアはこちら👇 <span class="tap-hint">横スクロールできます →</span></p>
+      <div class="map-wrap">
+        <div class="map-scroll">
+          <img src="area-map.webp" alt="ネイバーズ江坂文化祭 エリアマップ" />
+        </div>
+        <p class="map-hint">※ 横長の画像は横スクロールで全体を確認できます</p>
+      </div>
+    </section>
+
+    <!-- ===== DETAIL (auto-generated from EV) ===== -->
+    <section class="block" id="detail">
+      <div class="sec-head">
+        <div class="ic">✨</div>
+        <div class="tt">詳細<small>DETAIL</small></div>
+      </div>
+      <p class="sec-note">各エリアの出し物の詳細です。タップでポップアップも開きます🎶</p>
+      <div class="detail-list" id="detail-list"></div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <div class="garland" aria-hidden="true" style="margin-top:34px;"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <footer>
+      <p class="ttl">第2回 ネイバーズ江坂文化祭</p>
+      <p class="det">2026.6.20 SAT｜OPEN 13:00〜<br />会場：ネイバーズ江坂 1st</p>
+      <p class="heart">みんな、ゆる〜く楽しんでね</p>
+      <div class="foot-jump">
+        <a href="#program"><span>🎤</span>タイムテーブル</a>
+        <a href="#detail"><span>✨</span>詳細</a>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- ===== EVENT DETAIL MODAL ===== -->
+  <div id="ev-modal" class="ev-modal" aria-hidden="true">
+    <div class="ev-modal__backdrop" data-close></div>
+    <div class="ev-modal__sheet" role="dialog" aria-modal="true" aria-labelledby="ev-modal-title">
+      <button class="ev-modal__x" data-close aria-label="閉じる">✕</button>
+      <div class="ev-modal__head">
+        <span class="ev-modal__badge" id="ev-modal-badge">🎤 ステージ</span>
+        <span class="ev-modal__time" id="ev-modal-time">--:--</span>
+      </div>
+      <h3 class="ev-modal__title" id="ev-modal-title">タイトル</h3>
+      <div class="ev-modal__photo" id="ev-modal-photo">📷 写真は準備中</div>
+      <p class="ev-modal__by" id="ev-modal-by"></p>
+      <p class="ev-modal__desc" id="ev-modal-desc"></p>
+    </div>
+  </div>
+
+  <div id="tweaks-root"></div>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <script type="text/babel" src="tweaks-panel.jsx"></script>
+  <script>
+    (function(){
+      // 各セッションの詳細データ。写真・出演者・ひとことは決まり次第ここを更新してください。
+      var EV = {
+        open:   { badge:'🎀 ステージ', cat:'stage', time:'13:00〜13:15', title:'開会式',
+                  by:'主催チーム', desc:'いよいよ開幕！みんなで乾杯して、文化祭のスタートを盛り上げよう🎉' },
+        social: { badge:'🎤 ステージ', cat:'stage', time:'14:00〜14:45', title:'社交ダンス',
+                  by:'出演者：準備中', desc:'華やかなステップで魅せる社交ダンス。飛び入り体験コーナーもあるかも💃' },
+        aco:    { badge:'🎸 ステージ', cat:'stage', time:'15:00〜15:45', title:'好日屋上アコースティックLIVE',
+                  by:'出演者：準備中', desc:'やさしい歌声とギターの音色で、ほっと一息つけるライブタイム🎶' },
+        dance:  { badge:'🕺 ステージ', cat:'stage', time:'16:00〜16:45', title:'ネイバーズダンス部',
+                  by:'出演者：ネイバーズダンス部', desc:'キレッキレのパフォーマンスでフロアを沸かせます！手拍子で応援してね👏' },
+        dj:     { badge:'🎧 ステージ', cat:'stage', time:'17:00〜18:30', title:'DJ George × ななみんフィットネス',
+                  by:'出演者：DJ George / ななみん', desc:'DJプレイに合わせてみんなで体を動かそう！踊って笑って締めくくり🔥' },
+        close:  { badge:'🎉 ステージ', cat:'stage', time:'18:30〜19:00', title:'閉会式',
+                  by:'主催チーム', desc:'一日の締めくくり。みんなで記念撮影してお開きです📸また会おうね！' },
+        food_ao:    { badge:'🍔 フード', cat:'food', time:'13:00〜19:00 通し営業', title:'あおバーガー',
+                  by:'出演者：準備中', desc:'こだわりの手作りバーガーをご提供！天気よく結ばれた居々々🍔' },
+        food_curry: { badge:'🍛 フード', cat:'food', time:'13:00〜19:00 通し営業', title:'カレー部',
+                  by:'出演者：準備中', desc:'ネイバーズ自慢のスパイシーカレー！営業中は香りがわかります🌶️' },
+        food_thomas:{ badge:'🍲 フード', cat:'food', time:'13:00〜19:00 通し営業', title:'トーマス料理',
+                  by:'出演者：準備中', desc:'トーマスさんの手作り料理。何が出るかお楽しみに✨' },
+        art:    { badge:'🎨 アート', cat:'art', time:'13:00〜19:00 通し展示', title:'アートエリア',
+                  by:'あけみちゃん／あーりゃん', desc:'こだわりの作品をゆっくり鑑賞できる展示スペース。お気に入りを見つけて🎨' },
+        relax:  { badge:'💆 リラックス', cat:'relax', time:'随時受付', title:'ほぐしの満州',
+                  by:'担当：ほぐしの満州', desc:'歩き疲れたらここへ。やさしくほぐしてリフレッシュ、整いタイム💆‍♀️' }
+      };
+
+      var modal = document.getElementById('ev-modal');
+      var elBadge = document.getElementById('ev-modal-badge');
+      var elTime  = document.getElementById('ev-modal-time');
+      var elTitle = document.getElementById('ev-modal-title');
+      var elBy    = document.getElementById('ev-modal-by');
+      var elDesc  = document.getElementById('ev-modal-desc');
+      var elPhoto = document.getElementById('ev-modal-photo');
+
+      function open(key){
+        var d = EV[key]; if(!d) return;
+        elBadge.textContent = d.badge;
+        elTime.textContent  = d.time;
+        elTitle.textContent = d.title;
+        elBy.textContent    = d.by || '';
+        elDesc.textContent  = d.desc || '';
+        modal.setAttribute('data-cat', d.cat || 'stage');
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden','false');
+        document.body.style.overflow = 'hidden';
+      }
+      function close(){
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden','true');
+        document.body.style.overflow = '';
+      }
+
+      document.querySelectorAll('.ev[data-ev]').forEach(function(el){
+        el.style.cursor = 'pointer';
+        el.addEventListener('click', function(){ open(el.getAttribute('data-ev')); });
+      });
+      modal.querySelectorAll('[data-close]').forEach(function(b){ b.addEventListener('click', close); });
+      document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
+
+      // ===== 詳細を EV から自動生成（EVを更新すればここも変わります） =====
+      var GROUPS = [
+        { label:'🎤 ステージ', cat:'stage', keys:['open','social','aco','dance','dj','close'] },
+        { label:'🍔 フード',   cat:'food',  keys:['food_ao','food_curry','food_thomas'] },
+        { label:'🎨 アート',  cat:'art',   keys:['art'] },
+        { label:'💆 リラックス', cat:'relax', keys:['relax'] }
+      ];
+      var list = document.getElementById('detail-list');
+      if(list){
+        GROUPS.forEach(function(g){
+          // サブセクション見出し
+          var grpHead = document.createElement('div');
+          grpHead.className = 'detail-grp-head';
+          grpHead.setAttribute('data-cat', g.cat);
+          grpHead.textContent = g.label;
+          list.appendChild(grpHead);
+          // カード群
+          g.keys.forEach(function(key){
+            var d = EV[key]; if(!d) return;
+            var card = document.createElement('div');
+            card.className = 'detail-card';
+            card.setAttribute('data-cat', d.cat || 'stage');
+            card.style.cursor = 'pointer';
+            card.innerHTML =
+              '<div class="detail-card__photo">📷 写真は準備中</div>' +
+              '<div class="detail-card__body">' +
+                '<div class="detail-card__top">' +
+                  '<span class="detail-card__badge">' + d.badge + '</span>' +
+                  '<span class="detail-card__time">' + d.time + '</span>' +
+                '</div>' +
+                '<h3 class="detail-card__title">' + d.title + '</h3>' +
+                (d.by ? '<p class="detail-card__by">' + d.by + '</p>' : '') +
+                '<p class="detail-card__desc">' + (d.desc || '') + '</p>' +
+              '</div>';
+            card.addEventListener('click', function(){ open(key); });
+            list.appendChild(card);
+          });
+        });
+      }
+    })();
+  </script>
+  <script type="text/babel">
+    const THEME_MAP = { '和モダン（藍×朱）':'wamodern', '紙と墨':'kami', 'くすみコーラル':'coral', '夜祭ネイビー':'night' };
+    const FONT_OPTS = ['おまかせ','Mochiy Pop One','Hachi Maru Pop','Kosugi Maru','Zen Maru Gothic'];
+
+    const TWEAK_DEFAULTS = {
+      theme: '和モダン（藍×朱）',
+      headFont: 'おまかせ',
+      radius: 20,
+      deco: true
+    };
+
+    function App(){
+      const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+      React.useEffect(()=>{
+        document.documentElement.dataset.theme = THEME_MAP[t.theme] || 'wamodern';
+      },[t.theme]);
+      React.useEffect(()=>{
+        document.body.classList.toggle('deco-off', !t.deco);
+      },[t.deco]);
+      React.useEffect(()=>{
+        document.documentElement.style.setProperty('--radius', t.radius+'px');
+      },[t.radius]);
+      React.useEffect(()=>{
+        if(t.headFont && t.headFont!=='おまかせ'){
+          document.documentElement.style.setProperty('--fh', "'"+t.headFont+"'");
+        } else {
+          document.documentElement.style.removeProperty('--fh');
+        }
+      },[t.headFont]);
+
+      return (
+        <TweaksPanel title="Tweaks">
+          <TweakSection label="テイスト" />
+          <TweakSelect label="テーマ" value={t.theme}
+            options={Object.keys(THEME_MAP)}
+            onChange={(v)=>setTweak('theme', v)} />
+          <TweakSelect label="見出しフォント" value={t.headFont}
+            options={FONT_OPTS}
+            onChange={(v)=>setTweak('headFont', v)} />
+          <TweakSection label="スタイル" />
+          <TweakSlider label="角丸" value={t.radius} min={4} max={36} step={2} unit="px"
+            onChange={(v)=>setTweak('radius', v)} />
+          <TweakToggle label="デコレーション" value={t.deco}
+            onChange={(v)=>setTweak('deco', v)} />
+        </TweaksPanel>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('tweaks-root')).render(<App />);
+  </script>
+</body>
+</html>
