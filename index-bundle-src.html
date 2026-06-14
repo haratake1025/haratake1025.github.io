@@ -4,10 +4,21 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>第2回 ネイバーズ江坂文化祭｜6.20 SAT</title>
+<style>
+  /* オフライン版: システムフォントにフォールバック */
+  :root {
+    --fh: 'Hiragino Maru Gothic ProN', 'Hiragino Maru Gothic Pro', 'Yu Gothic', 'Meiryo', 'BIZ UDPGothic', sans-serif;
+    --fb: 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', 'BIZ UDPGothic', sans-serif;
+  }
+</style>
+<meta name="ext-resource-dependency" content="uploads/社交ダンス.jpg" data-resource-id="social_img" />
+<meta name="ext-resource-dependency" content="uploads/好日屋上.jpg" data-resource-id="aco_img" />
+<meta name="ext-resource-dependency" content="uploads/ネイバーズダンス部.png" data-resource-id="dance_img" />
+<meta name="ext-resource-dependency" content="uploads/DJgerge.jpg" data-resource-id="dj_img" />
+<meta name="ext-resource-dependency" content="uploads/ミスターコン.png" data-resource-id="mr_img" />
+<meta name="ext-resource-dependency" content="uploads/ほぐしの満州.jpg" data-resource-id="relax_img" />
+<meta name="ext-resource-dependency" content="uploads/スパルタ英会話教室.png" data-resource-id="brett_img" />
 <meta name="description" content="2026年6月20日(土) 13:00〜 ネイバーズ江坂1stにて開催！LOOSE & ART & FUN" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Hachi+Maru+Pop&family=Yomogi&family=Klee+One:wght@400;600&family=Zen+Maru+Gothic:wght@400;500;700&family=Kosugi+Maru&display=swap" rel="stylesheet" />
 <style>
   :root{
     --radius: 20px;
@@ -586,6 +597,16 @@
     .bottomnav{ position:sticky; bottom:18px; margin:0 auto; }
   }
 </style>
+
+<template id="__bundler_thumbnail" data-bg-color="#f6f1e6">
+  <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+    <rect width="400" height="300" fill="#f6f1e6"/>
+    <rect x="40" y="80" width="320" height="140" rx="18" fill="#d4503e" opacity="0.15"/>
+    <text x="200" y="148" text-anchor="middle" font-size="52" fill="#d4503e">🏮</text>
+    <text x="200" y="185" text-anchor="middle" font-size="16" fill="#2b3a55" font-family="sans-serif" font-weight="bold">ネイバーズ江坂文化祭</text>
+    <text x="200" y="208" text-anchor="middle" font-size="12" fill="#9a9080" font-family="sans-serif">2026.6.20 SAT</text>
+  </svg>
+</template>
 </head>
 <body style="background-color: rgb(255, 234, 242)">
   <main class="page" data-screen-label="文化祭HP">
@@ -816,15 +837,15 @@
       var EV = {
         open:   { badge:'🎀 ステージ', cat:'stage', time:'13:30〜13:45', title:'開会式',
                   by:'運営チーム（ぐっちー、りおちゃん、かさたろう）', desc:'いよいよ開幕！みんなで乾杯して、文化祭のスタートを盛り上げよう🎉' },
-        social: { badge:'🎤 ステージ', cat:'stage', time:'15:30〜16:00', title:'社交ダンス', img:'uploads/社交ダンス.jpg',
+        social: { badge:'🎤 ステージ', cat:'stage', time:'15:30〜16:00', title:'社交ダンス', img:window.__resources.social_img,
                   by:'出演者：りほちゃん、つねさん', desc:'華やかなステップで魅せる社交ダンス。飛び入り体験コーナーもあるかも💃' },
-        aco:    { badge:'🎸 ステージ', cat:'stage', time:'14:45〜15:15', title:'好日屋上アコースティックLIVE', img:'uploads/好日屋上.jpg',
+        aco:    { badge:'🎸 ステージ', cat:'stage', time:'14:45〜15:15', title:'好日屋上アコースティックLIVE', img:window.__resources.aco_img,
                   by:'出演者：うみちゃん・かのくん・まゆちゃん・さっちゃま', desc:'やさしい歌声とギターの音色で、ほっと一息つけるライブタイム🎶' },
-        dance:  { badge:'🕺 ステージ', cat:'stage', time:'14:00〜14:30', title:'ネイバーズダンス部', img:'uploads/ネイバーズダンス部.png',
+        dance:  { badge:'🕺 ステージ', cat:'stage', time:'14:00〜14:30', title:'ネイバーズダンス部', img:window.__resources.dance_img,
                   by:'出演者：ネイバーズダンス部（ごうちゃん・りほちゃん・むぎちゃん・まりんちゃん・なっちゃん）', desc:'キレッキレのパフォーマンスでフロアを沸かせます！手拍子で応援してね👏' },
-        dj:     { badge:'🎧 ステージ', cat:'stage', time:'16:30〜17:30', title:'DJ George × ななみんフィットネス', img:'uploads/DJgerge.jpg',
+        dj:     { badge:'🎧 ステージ', cat:'stage', time:'16:30〜17:30', title:'DJ George × ななみんフィットネス', img:window.__resources.dj_img,
                   by:'出演者：DJ George / ななみん', desc:'DJ Georgeとななみんの夢のコラボ！みんなで踊って笑ってたのしもう🔥 B\'zを愛するあの男もやってくる！？' },
-        mr:     { badge:'🏆 ステージ', cat:'stage', time:'18:00〜18:30', title:'ミスターコンテスト', img:'uploads/ミスターコン.png',
+        mr:     { badge:'🏆 ステージ', cat:'stage', time:'18:00〜18:30', title:'ミスターコンテスト', img:window.__resources.mr_img,
                   by:'出演者：ぐっちー、かさたろう、おおつかさん、ゆうちゃみ、JP　他多数', desc:'ネイバーズのミスターを決める一大イベント！投票でお気に入りを応援しよう🏆' },
         close:  { badge:'🎉 ステージ', cat:'stage', time:'18:30〜19:00', title:'閉会式・写真撮影',
                   by:'主催チーム', desc:'一日の締めくくり。みんなで記念撮影してお開きです📸また会おうね！' },
@@ -838,9 +859,9 @@
                   by:'出演者：あけみちゃん', desc:'あけみちゃんのこだわり作品をゆっくり鑑賞できます。お気に入りを見つけてね🎨' },
         art_aryan: { badge:'🖼️ アート', cat:'art', time:'13:00〜19:00 通し展示', title:'あーりゃん',
                   by:'出演者：あーりゃん', desc:'あーりゃんの個性あふれる展示作品が並びます。じっくり楽しんで🌸' },
-        relax:  { badge:'💆 リラックス', cat:'relax', time:'随時受付', title:'ほぐしの満州', img:'uploads/ほぐしの満州.jpg',
+        relax:  { badge:'💆 リラックス', cat:'relax', time:'随時受付', title:'ほぐしの満州', img:window.__resources.relax_img,
                   by:'担当：満州をこよなく愛するごとちゃん', desc:'歩き疲れたらここへ。やさしくほぐしてリフレッシュ、整いタイム💆‍♀️' },
-        brett:  { badge:'🗣️ リラックス', cat:'relax', time:'13:15～13:45', title:'スパルタ英会話教室', img:'uploads/スパルタ英会話教室.png',
+        brett:  { badge:'🗣️ リラックス', cat:'relax', time:'13:15～13:45', title:'スパルタ英会話教室', img:window.__resources.brett_img,
                   by:'出演者：Brett', desc:'友達作りのチャンスにもピッタリ！Brett先生と一緒に、笑いながら生きた英語をスパルタで身につけよう！ワンフレーズだけでも大歓迎💪🌟' }
       };
 

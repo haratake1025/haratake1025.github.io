@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>配色案｜ネイバーズ江坂文化祭</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Zen+Maru+Gothic:wght@400;500;700&family=Yomogi&family=Shippori+Mincho:wght@600;700;800&display=swap" rel="stylesheet" />
+<style>
+  *{ box-sizing:border-box; }
+  body{ margin:0; }
+
+  /* ----- mini preview (one vertical slice of the page) ----- */
+  .mini{
+    --radius:18px;
+    width:340px;
+    background:var(--bg);
+    border-radius:20px;
+    overflow:hidden;
+    font-family:'Zen Maru Gothic',sans-serif;
+    color:var(--ink);
+    box-shadow:0 1px 0 rgba(0,0,0,.04);
+  }
+  .mini .garland{ display:flex; height:18px; border-top:3px solid var(--ink); }
+  .mini .garland i{ flex:1; height:15px; clip-path:polygon(0 0,100% 0,50% 100%); }
+  .mini .garland i:nth-child(5n+1){ background:var(--p); }
+  .mini .garland i:nth-child(5n+2){ background:var(--a1); }
+  .mini .garland i:nth-child(5n+3){ background:var(--a2); }
+  .mini .garland i:nth-child(5n+4){ background:var(--pd); }
+  .mini .garland i:nth-child(5n+5){ background:var(--ink); opacity:.6; }
+
+  .mini .hero{
+    position:relative; text-align:center;
+    padding:22px 18px 24px;
+    background:linear-gradient(180deg, color-mix(in srgb,var(--p) 16%, var(--bg)), var(--bg));
+    border-bottom:2px dashed color-mix(in srgb,var(--p) 40%, var(--bg));
+  }
+  .mini .lant{ position:absolute; top:8px; width:20px; height:26px; }
+  .mini .lant.l{ left:16px; } .mini .lant.r{ right:16px; }
+  .mini .lant b{ display:block; height:24px; border-radius:50%/42%;
+    background:linear-gradient(180deg, color-mix(in srgb,var(--lc) 75%,#fff), var(--lc));
+    border:1.5px solid color-mix(in srgb,var(--lc) 55%, #000 14%); }
+  .mini .lant.l b{ --lc:var(--pd); } .mini .lant.r b{ --lc:var(--a2); }
+  .mini .edition{
+    display:inline-block; font-family:'Mochiy Pop One'; font-size:10px;
+    color:var(--onP); background:var(--pd); padding:4px 12px; border-radius:999px;
+  }
+  .mini h1{
+    font-family:var(--fh); font-weight:800; margin:12px 0 4px;
+    font-size:25px; line-height:1.25; color:var(--titleC);
+  }
+  .mini .tag{ font-family:'Mochiy Pop One'; font-size:10px; letter-spacing:.12em; color:var(--a1); margin-top:8px; }
+
+  .mini .ticket{
+    position:relative; margin:16px 22px 0; background:var(--card);
+    border:2px solid var(--ink); border-radius:var(--radius);
+    padding:14px 14px; text-align:center;
+    box-shadow:4px 5px 0 color-mix(in srgb,var(--p) 50%, var(--bg));
+  }
+  .mini .ticket::before,.mini .ticket::after{
+    content:''; position:absolute; top:50%; width:16px; height:16px; border-radius:50%;
+    background:var(--bg); border:2px solid var(--ink); transform:translateY(-50%);
+  }
+  .mini .ticket::before{ left:-9px; } .mini .ticket::after{ right:-9px; }
+  .mini .when{ font-family:var(--fh); font-weight:800; font-size:20px; }
+  .mini .when .sat{ color:var(--pd); }
+  .mini .pill{ display:inline-block; margin-top:8px; font-family:'Mochiy Pop One'; font-size:12px;
+    background:var(--a2); color:var(--onA2); padding:3px 13px; border-radius:999px; transform:rotate(-2deg); }
+  .mini .stamp{
+    position:absolute; top:-12px; right:-6px; width:46px; height:46px; border-radius:50%;
+    display:grid; place-items:center; text-align:center; line-height:1.1;
+    background:var(--card); border:2px dashed var(--pd); color:var(--pd);
+    font-family:var(--fh); font-weight:800; font-size:10px; transform:rotate(10deg);
+  }
+
+  .mini .cards{ padding:16px 18px 6px; display:grid; gap:10px; }
+  .mini .c{
+    display:flex; gap:10px; align-items:center; background:var(--card);
+    border:2px solid var(--ink); border-radius:14px; padding:10px 12px;
+    box-shadow:3px 4px 0 color-mix(in srgb,var(--ac) 55%, var(--bg));
+  }
+  .mini .c .e{ width:34px; height:34px; flex:0 0 34px; border-radius:50%; display:grid; place-items:center; font-size:18px;
+    background:color-mix(in srgb,var(--ac) 30%, var(--card)); }
+  .mini .c h3{ margin:0; font-family:var(--fh); font-weight:700; font-size:13px; }
+  .mini .c p{ margin:2px 0 0; font-size:11px; color:color-mix(in srgb,var(--ink) 75%, var(--muted)); }
+  .mini .c1{ --ac:var(--p); } .mini .c2{ --ac:var(--a1); }
+
+  .mini .ttrow{ padding:14px 18px 4px; display:flex; gap:6px; }
+  .mini .ttrow span{ flex:1; text-align:center; font-family:'Mochiy Pop One'; font-size:10px; color:var(--onP);
+    padding:6px 2px; border-radius:9px 9px 0 0; }
+  .mini .ttrow .s1{ background:var(--pd); } .mini .ttrow .s2{ background:var(--p); }
+  .mini .ttrow .s3{ background:var(--a1); } .mini .ttrow .s4{ background:var(--a2); }
+
+  .mini .foot{ height:18px; }
+
+  /* ----- palette legend ----- */
+  .legend{ width:340px; margin-top:14px; font-family:'Zen Maru Gothic',sans-serif; }
+  .legend .name{ font-family:'Mochiy Pop One'; font-size:15px; margin:0 0 2px; }
+  .legend .desc{ font-size:12px; color:#6b6b6b; margin:0 0 10px; line-height:1.6; }
+  .legend .sw{ display:flex; gap:7px; }
+  .legend .sw i{ width:34px; height:34px; border-radius:9px; border:1.5px solid rgba(0,0,0,.12); position:relative; }
+  .legend .sw i b{ position:absolute; left:0; right:0; bottom:-16px; text-align:center; font-size:8.5px; color:#999; font-family:monospace; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="design-canvas.jsx"></script>
+<script type="text/babel">
+  const PALETTES = [
+    {
+      id:'wamodern', name:'A・和モダン（藍 × 朱）',
+      desc:'生成りの紙地に藍色の文字、差し色は朱（しゅ）と金。色数をぐっと絞った、上品で大人っぽいお祭り。',
+      fh:"'Shippori Mincho'",
+      vars:{ '--bg':'#f6f1e6','--card':'#fffdf7','--ink':'#26344f','--muted':'#9a9486',
+        '--p':'#d4503e','--pd':'#b53f30','--a1':'#3f5a78','--a2':'#c8a45a',
+        '--titleC':'#26344f','--onP':'#fff7ef','--onA2':'#4a3a16',
+        '--fh':"'Shippori Mincho'" },
+      sw:[['#f6f1e6','地'],['#26344f','藍'],['#d4503e','朱'],['#c8a45a','金']]
+    },
+    {
+      id:'coral', name:'B・くすみコーラル（1色アクセント）',
+      desc:'やわらかな生成り白に、くすみコーラル1色を主役に。差し色はセージをほんの少し。今のかわいさは残しつつ、色味は静かに。',
+      vars:{ '--bg':'#fbf6f1','--card':'#ffffff','--ink':'#4a4039','--muted':'#a99e95',
+        '--p':'#e2917a','--pd':'#cf6f56','--a1':'#7fa088','--a2':'#e7c08a',
+        '--titleC':'#cf6f56','--onP':'#fff','--onA2':'#5a4727',
+        '--fh':"'Mochiy Pop One'" },
+      sw:[['#fbf6f1','地'],['#4a4039','墨茶'],['#e2917a','珊瑚'],['#7fa088','セージ']]
+    },
+    {
+      id:'paper', name:'C・紙と墨（差し色 朱 ひとつ）',
+      desc:'いちばんシンプル。紙色＋墨色のミニマルな下地に、お祭りの朱を一点だけ効かせる。提灯やガーランドの赤がきれいに映える。',
+      fh:"'Shippori Mincho'",
+      vars:{ '--bg':'#f3efe5','--card':'#fbf8f0','--ink':'#32302b','--muted':'#a39c8d',
+        '--p':'#cf4b32','--pd':'#b23a24','--a1':'#6f6a5e','--a2':'#d6b24a',
+        '--titleC':'#cf4b32','--onP':'#fff','--onA2':'#4a3c12',
+        '--fh':"'Shippori Mincho'" },
+      sw:[['#f3efe5','紙'],['#32302b','墨'],['#cf4b32','朱'],['#d6b24a','黄金']]
+    },
+    {
+      id:'night', name:'D・夜祭ネイビー（提灯の灯り）',
+      desc:'紺色の夜空に、提灯のあかりのような暖色（橙・珊瑚）をぽつぽつ。色数は少ないのに、いちばん「夜店」感の出る方向。',
+      dark:true,
+      vars:{ '--bg':'#202a44','--card':'#2b3656','--ink':'#f2ecdd','--muted':'#9aa3bd',
+        '--p':'#ef9d4a','--pd':'#e3823a','--a1':'#e3695a','--a2':'#f0b35e',
+        '--titleC':'#f5d9a8','--onP':'#2a1e0a','--onA2':'#3a2a0c',
+        '--fh':"'Mochiy Pop One'" },
+      sw:[['#202a44','夜紺'],['#f2ecdd','灯白'],['#ef9d4a','橙灯'],['#e3695a','珊瑚']]
+    },
+  ];
+
+  function Mini({pal}){
+    const style = {...pal.vars, '--fh':pal.vars['--fh']};
+    return (
+      <div className="mini" style={style}>
+        <div className="garland"><i/><i/><i/><i/><i/><i/><i/><i/><i/><i/><i/></div>
+        <div className="hero">
+          <div className="lant l"><b/></div>
+          <div className="lant r"><b/></div>
+          <span className="edition">🎪 第 2 回</span>
+          <h1>ネイバーズ江坂<br/>文化祭</h1>
+          <div className="tag">LOOSE &amp; ART &amp; FUN</div>
+        </div>
+        <div className="ticket">
+          <span className="stamp">入退場<br/>自由</span>
+          <div className="when">6月20日 <span className="sat">（土）</span></div>
+          <span className="pill">OPEN 13:00〜</span>
+        </div>
+        <div className="cards">
+          <div className="c c1"><div className="e">🎈</div><div><h3>途中参加OK！</h3><p>自由参加、ドタ参ウェルカム🙌</p></div></div>
+          <div className="c c2"><div className="e">🤝</div><div><h3>友達作ろう</h3><p>名札シールで気軽に話そう💬</p></div></div>
+        </div>
+        <div className="ttrow"><span className="s1">ステージ</span><span className="s2">フード</span><span className="s3">アート</span><span className="s4">リラックス</span></div>
+        <div className="foot"/>
+      </div>
+    );
+  }
+
+  function Legend({pal}){
+    return (
+      <div className="legend">
+        <p className="name">{pal.name}</p>
+        <p className="desc">{pal.desc}</p>
+        <div className="sw">{pal.sw.map((s,i)=>(<i key={i} style={{background:s[0]}}><b>{s[1]}</b></i>))}</div>
+      </div>
+    );
+  }
+
+  function App(){
+    return (
+      <DesignCanvas>
+        <DCSection id="palettes" title="配色案 — シンプル × お祭り" subtitle="同じレイアウトを4つの配色で。実際のページの一部を再現しています。気に入った案・混ぜたい要素を教えてください（まだ反映していません）">
+          {PALETTES.map(p=>(
+            <DCArtboard key={p.id} id={p.id} label={p.name} width={376} height={680}>
+              <div style={{padding:'18px',display:'flex',flexDirection:'column',alignItems:'center'}}>
+                <Mini pal={p}/>
+                <Legend pal={p}/>
+              </div>
+            </DCArtboard>
+          ))}
+        </DCSection>
+      </DesignCanvas>
+    );
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>
