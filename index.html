@@ -383,6 +383,22 @@
   .ev.allday.food{ --ac:var(--food); }
   .ev.allday.art{ --ac:var(--art); }
   .ev.allday.relax{ --ac:var(--relax); }
+  .ev.food{ --ac:var(--food); align-items:center; text-align:center; }
+  .ev.food-main{
+    background:repeating-linear-gradient(45deg, #fff, #fff 9px, color-mix(in srgb,var(--food) 14%, #fff) 9px, color-mix(in srgb,var(--food) 14%, #fff) 18px);
+    color:color-mix(in srgb,var(--ink) 80%, var(--food));
+  }
+  .ev.food-req{
+    background:color-mix(in srgb,var(--food) 9%, #fff);
+    color:color-mix(in srgb,var(--ink) 60%, var(--food));
+    border-style:dashed;
+    justify-content:center;
+  }
+  .ev .reqlabel{
+    display:inline-block; font-family:var(--fh); font-size:10px;
+    color:var(--food); background:color-mix(in srgb,var(--food) 18%, #fff);
+    padding:2px 9px; border-radius:999px; margin-bottom:7px;
+  }
   .ev .adlabel{
     display:inline-block; font-family:var(--fh); font-size:10px;
     color:#fff; background:var(--ac);
@@ -393,6 +409,9 @@
     background:color-mix(in srgb,var(--relax) 30%, #fff);
     border-color:color-mix(in srgb,var(--relax) 50%, #fff);
     color:color-mix(in srgb,var(--ink) 78%, var(--relax));
+  }
+  .ev.brett-slot{
+    font-size:11px; line-height:1.25; font-weight:800;
   }
 
   /* ---------- map ---------- */
@@ -451,12 +470,11 @@
   .ev-modal__time{ font-size:13px; font-weight:700; color:var(--muted); }
   .ev-modal__title{ font-family:var(--fh); font-size:21px; font-weight:400; margin:6px 0 12px; color:var(--ink); }
   .ev-modal__photo{
-    height:140px; display:grid; place-items:center;
-    background:repeating-linear-gradient(45deg, color-mix(in srgb,var(--ec,var(--primary)) 7%, var(--card)), color-mix(in srgb,var(--ec,var(--primary)) 7%, var(--card)) 14px, color-mix(in srgb,var(--ec,var(--primary)) 14%, var(--card)) 14px, color-mix(in srgb,var(--ec,var(--primary)) 14%, var(--card)) 28px);
-    border:2px dashed color-mix(in srgb,var(--ec,var(--primary-deep)) 50%, var(--card));
-    border-radius:16px; color:var(--muted); font-size:14px; font-weight:700;
-    margin-bottom:14px;
+    width:100%; max-height:260px; overflow:hidden;
+    border-radius:16px; margin-bottom:14px;
+    background:color-mix(in srgb,var(--ec,var(--primary)) 6%, var(--card));
   }
+  .ev-modal__photo img{ display:block; width:100%; height:auto; max-height:260px; object-fit:contain; }
   .ev-modal__by{ font-size:13.5px; font-weight:700; color:var(--ec, var(--primary-deep)); margin-bottom:8px; }
   .ev-modal__desc{ font-size:14px; line-height:1.75; color:color-mix(in srgb,var(--ink) 88%, var(--muted)); }
 
@@ -486,12 +504,9 @@
   .detail-card[data-cat="food"]{ --ec:var(--food); }
   .detail-card[data-cat="art"]{ --ec:var(--art); }
   .detail-card[data-cat="relax"]{ --ec:var(--relax); }
-  .detail-card__photo{
-    height:96px; display:grid; place-items:center;
-    background:repeating-linear-gradient(45deg, color-mix(in srgb,var(--ec,var(--primary)) 7%, var(--card)), color-mix(in srgb,var(--ec,var(--primary)) 7%, var(--card)) 12px, color-mix(in srgb,var(--ec,var(--primary)) 14%, var(--card)) 12px, color-mix(in srgb,var(--ec,var(--primary)) 14%, var(--card)) 24px);
-    color:var(--muted); font-size:13px; font-weight:700;
-    border-bottom:2px dashed color-mix(in srgb,var(--ec,var(--primary-deep)) 40%, var(--card));
-  }
+
+  .detail-card__photo{ width:100%; background:color-mix(in srgb,var(--ec,var(--primary)) 6%, var(--card)); }
+  .detail-card__photo img{ display:block; width:100%; height:auto; max-height:280px; object-fit:contain; }
   .detail-card__body{ padding:13px 15px 15px; }
   .detail-card__top{ display:flex; align-items:center; gap:9px; margin-bottom:5px; }
   .detail-card__badge{
@@ -676,17 +691,22 @@
           </div>
 
           <!-- STAGE events (col 2) -->
-          <div class="ev c3 short" data-ev="open" style="grid-column:2;grid-row:3/4">🎀 開会式</div>
-          <div class="ev c2" data-ev="social" style="grid-column:2;grid-row:6/8">社交ダンス</div>
-          <div class="ev c4" data-ev="aco" style="grid-column:2;grid-row:10/12">好日屋上アコースティックLIVE</div>
+          <div class="ev c3 short" data-ev="open" style="grid-column:2;grid-row:6/7">🎀 開会式</div>
+          <div class="ev c2" data-ev="social" style="grid-column:2;grid-row:8/10">社交ダンス</div>
+          <div class="ev c4" data-ev="aco" style="grid-column:2;grid-row:11/13">好日屋上アコースティックLIVE</div>
           <div class="ev c1" data-ev="dance" style="grid-column:2;grid-row:14/16">ネイバーズダンス部</div>
-          <div class="ev c5" data-ev="dj" style="grid-column:2;grid-row:18/22">DJ George<br />× ななみんフィットネス</div>
-          <div class="ev c6 short" data-ev="close" style="grid-column:2;grid-row:24/26">🎉 閉会式</div>
+          <div class="ev c5" data-ev="dj" style="grid-column:2;grid-row:17/21">DJ George<br />× ななみんフィットネス</div>
+          <div class="ev c6" data-ev="mr" style="grid-column:2;grid-row:22/24">ミスターコンテスト</div>
+          <div class="ev c3 short" data-ev="close" style="grid-column:2;grid-row:24/26">🎉 閉会式<br />＆写真撮影</div>
 
-          <!-- FOOD (col 3) all-day -->
-          <div class="ev allday food" data-ev="food" style="grid-column:3;grid-row:2/26">
-            <span class="adlabel">通し営業</span>
+          <!-- FOOD (col 3) -->
+          <div class="ev food food-main" data-ev="food" style="grid-column:3;grid-row:2/6">
+            <span class="adlabel">🍴 フードタイム</span>
             あおバーガー<br />カレー部<br />トーマス料理
+          </div>
+          <div class="ev food food-req" data-ev="food" style="grid-column:3;grid-row:6/26">
+            <span class="reqlabel">14:00〜</span>
+            リクエストに<br />応じて提供
           </div>
 
           <!-- ART (col 4) all-day -->
@@ -695,7 +715,8 @@
             あけみちゃん<br />あーりゃん
           </div>
 
-          <!-- RELAX (col 5) hourly 15-min slots -->
+          <!-- RELAX (col 5) -->
+          <div class="ev relax-slot brett-slot" data-ev="brett" style="grid-column:5;grid-row:3/5">スパルタ<br />英会話教室</div>
           <div class="ev relax-slot" data-ev="relax" style="grid-column:5;grid-row:6/7">ほぐしの満州</div>
           <div class="ev relax-slot" data-ev="relax" style="grid-column:5;grid-row:10/11">ほぐしの満州</div>
           <div class="ev relax-slot" data-ev="relax" style="grid-column:5;grid-row:14/15">ほぐしの満州</div>
@@ -768,28 +789,34 @@
     (function(){
       // 各セッションの詳細データ。写真・出演者・ひとことは決まり次第ここを更新してください。
       var EV = {
-        open:   { badge:'🎀 ステージ', cat:'stage', time:'13:00〜13:15', title:'開会式',
-                  by:'主催チーム', desc:'いよいよ開幕！みんなで乾杯して、文化祭のスタートを盛り上げよう🎉' },
-        social: { badge:'🎤 ステージ', cat:'stage', time:'14:00〜14:45', title:'社交ダンス',
-                  by:'出演者：準備中', desc:'華やかなステップで魅せる社交ダンス。飛び入り体験コーナーもあるかも💃' },
-        aco:    { badge:'🎸 ステージ', cat:'stage', time:'15:00〜15:45', title:'好日屋上アコースティックLIVE',
-                  by:'出演者：準備中', desc:'やさしい歌声とギターの音色で、ほっと一息つけるライブタイム🎶' },
-        dance:  { badge:'🕺 ステージ', cat:'stage', time:'16:00〜16:45', title:'ネイバーズダンス部',
-                  by:'出演者：ネイバーズダンス部', desc:'キレッキレのパフォーマンスでフロアを沸かせます！手拍子で応援してね👏' },
-        dj:     { badge:'🎧 ステージ', cat:'stage', time:'17:00〜18:30', title:'DJ George × ななみんフィットネス',
-                  by:'出演者：DJ George / ななみん', desc:'DJプレイに合わせてみんなで体を動かそう！踊って笑って締めくくり🔥' },
-        close:  { badge:'🎉 ステージ', cat:'stage', time:'18:30〜19:00', title:'閉会式',
+        open:   { badge:'🎀 ステージ', cat:'stage', time:'14:00〜14:15', title:'開会式',
+                  by:'運営チーム（ぐっちー、りおちゃん、かさたろう）', desc:'いよいよ開幕！みんなで乾杯して、文化祭のスタートを盛り上げよう🎉' },
+        social: { badge:'🎤 ステージ', cat:'stage', time:'14:30〜15:00', title:'社交ダンス', img:'uploads/社交ダンス.jpg',
+                  by:'出演者：りほちゃん、つねさん', desc:'華やかなステップで魅せる社交ダンス。飛び入り体験コーナーもあるかも💃' },
+        aco:    { badge:'🎸 ステージ', cat:'stage', time:'15:15〜15:45', title:'好日屋上アコースティックLIVE', img:'uploads/好日屋上.jpg',
+                  by:'出演者：うみ・ももちゃん・まゆちゃん・さっちゃま・かのくん', desc:'やさしい歌声とギターの音色で、ほっと一息つけるライブタイム🎶' },
+        dance:  { badge:'🕺 ステージ', cat:'stage', time:'16:00〜16:30', title:'ネイバーズダンス部', img:'uploads/ネイバーズダンス部.png',
+                  by:'出演者：ネイバーズダンス部（ごうちゃん・りほちゃん・むぎちゃん・まりんちゃん・なっちゃん）', desc:'キレッキレのパフォーマンスでフロアを沸かせます！手拍子で応援してね👏' },
+        dj:     { badge:'🎧 ステージ', cat:'stage', time:'16:45〜17:45', title:'DJ George × ななみんフィットネス', img:'uploads/DJgerge.jpg',
+                  by:'出演者：DJ George / ななみん', desc:'DJ Georgeとななみんの夢のコラボ！みんなで踊って笑ってたのしもう🔥' },
+        mr:     { badge:'🏆 ステージ', cat:'stage', time:'18:00〜18:30', title:'ミスターコンテスト', img:'uploads/ミスターコン.png',
+                  by:'出演者：ぐっちー、かさたろう、おおつかさん、せきさん、ゆうちゃみ、JP　他多数', desc:'ネイバーズのミスターを決める一大イベント！投票でお気に入りを応援しよう🏆' },
+        close:  { badge:'🎉 ステージ', cat:'stage', time:'18:30〜19:00', title:'閉会式・写真撮影',
                   by:'主催チーム', desc:'一日の締めくくり。みんなで記念撮影してお開きです📸また会おうね！' },
-        food_ao:    { badge:'🍔 フード', cat:'food', time:'13:00〜19:00 通し営業', title:'あおバーガー',
-                  by:'出演者：準備中', desc:'こだわりの手作りバーガーをご提供！天気よく結ばれた居々々🍔' },
-        food_curry: { badge:'🍛 フード', cat:'food', time:'13:00〜19:00 通し営業', title:'カレー部',
-                  by:'出演者：準備中', desc:'ネイバーズ自慢のスパイシーカレー！営業中は香りがわかります🌶️' },
-        food_thomas:{ badge:'🍲 フード', cat:'food', time:'13:00〜19:00 通し営業', title:'トーマス料理',
-                  by:'出演者：準備中', desc:'トーマスさんの手作り料理。何が出るかお楽しみに✨' },
-        art:    { badge:'🎨 アート', cat:'art', time:'13:00〜19:00 通し展示', title:'アートエリア',
-                  by:'あけみちゃん／あーりゃん', desc:'こだわりの作品をゆっくり鑑賞できる展示スペース。お気に入りを見つけて🎨' },
-        relax:  { badge:'💆 リラックス', cat:'relax', time:'随時受付', title:'ほぐしの満州',
-                  by:'担当：ほぐしの満州', desc:'歩き疲れたらここへ。やさしくほぐしてリフレッシュ、整いタイム💆‍♀️' }
+        food_ao:    { badge:'🍔 フード', cat:'food', time:'13:00〜14:00 フードタイム（以降リクエスト対応）', title:'あおバーガー',
+                  by:'出演者：あおちゃん', desc:'こだわりの手作りバーガーをご提供！ジューシーな一品をぜひどうぞ🍔' },
+        food_curry: { badge:'🍛 フード', cat:'food', time:'13:00〜14:00 フードタイム（以降リクエスト対応）', title:'カレー部',
+                  by:'出演者：さっちゃま、いけめぐ、まゆさん、かまちゃん', desc:'ネイバーズ自慢のスパイシーカレー！営業中は香りがわかります🌶️' },
+        food_thomas:{ badge:'🍲 フード', cat:'food', time:'13:00〜14:00 フードタイム（以降リクエスト対応）', title:'トーマス料理',
+                  by:'出演者：トーマス、ニコ', desc:'トーマスさんの手作り料理。何が出るかお楽しみに✨' },
+        art_akemi: { badge:'🎨 アート', cat:'art', time:'13:00〜19:00 通し展示', title:'あけみちゃん',
+                  by:'出演者：あけみちゃん', desc:'あけみちゃんのこだわり作品をゆっくり鑑賞できます。お気に入りを見つけてね🎨' },
+        art_aryan: { badge:'🖼️ アート', cat:'art', time:'13:00〜19:00 通し展示', title:'あーりゃん',
+                  by:'出演者：あーりゃん', desc:'あーりゃんの個性あふれる展示作品が並びます。じっくり楽しんで🌸' },
+        relax:  { badge:'💆 リラックス', cat:'relax', time:'随時受付', title:'ほぐしの満州', img:'uploads/ほぐしの満州.jpg',
+                  by:'担当：満州をこよなく愛するごとちゃん', desc:'歩き疲れたらここへ。やさしくほぐしてリフレッシュ、整いタイム💆‍♀️' },
+        brett:  { badge:'🗣️ リラックス', cat:'relax', time:'13:15～13:45', title:'スパルタ英会話教室', img:'uploads/スパルタ英会話教室.png',
+                  by:'出演者：Brett', desc:'友達作りのチャンスにもピッタリ！Brett先生と一緒に、笑いながら生きた英語をスパルタで身につけよう！ワンフレーズだけでも大歓迎💪🌟' }
       };
 
       var modal = document.getElementById('ev-modal');
@@ -807,6 +834,12 @@
         elTitle.textContent = d.title;
         elBy.textContent    = d.by || '';
         elDesc.textContent  = d.desc || '';
+        if(d.img){
+          elPhoto.innerHTML = '<img src="' + d.img + '" alt="' + d.title + '" />';
+          elPhoto.style.display = '';
+        } else {
+          elPhoto.style.display = 'none';
+        }
         modal.setAttribute('data-cat', d.cat || 'stage');
         modal.classList.add('is-open');
         modal.setAttribute('aria-hidden','false');
@@ -818,19 +851,32 @@
         document.body.style.overflow = '';
       }
 
+      var SCROLL_KEYS = { food:'food', art:'art', relax:'relax' };
       document.querySelectorAll('.ev[data-ev]').forEach(function(el){
         el.style.cursor = 'pointer';
-        el.addEventListener('click', function(){ open(el.getAttribute('data-ev')); });
+        el.addEventListener('click', function(){
+          var key = el.getAttribute('data-ev');
+          var grpCat = SCROLL_KEYS[key];
+          if(grpCat){
+            var target = document.getElementById('detail-grp-' + grpCat);
+            if(target){
+              var y = target.getBoundingClientRect().top + window.scrollY - 20;
+              window.scrollTo({ top: y, behavior: 'smooth' });
+            }
+          } else {
+            open(key);
+          }
+        });
       });
       modal.querySelectorAll('[data-close]').forEach(function(b){ b.addEventListener('click', close); });
       document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
 
       // ===== 詳細を EV から自動生成（EVを更新すればここも変わります） =====
       var GROUPS = [
-        { label:'🎤 ステージ', cat:'stage', keys:['open','social','aco','dance','dj','close'] },
+        { label:'🎤 ステージ', cat:'stage', keys:['open','social','aco','dance','dj','mr','close'] },
         { label:'🍔 フード',   cat:'food',  keys:['food_ao','food_curry','food_thomas'] },
-        { label:'🎨 アート',  cat:'art',   keys:['art'] },
-        { label:'💆 リラックス', cat:'relax', keys:['relax'] }
+        { label:'🎨 アート',  cat:'art',   keys:['art_akemi','art_aryan'] },
+        { label:'💆 リラックス', cat:'relax', keys:['relax','brett'] }
       ];
       var list = document.getElementById('detail-list');
       if(list){
@@ -838,6 +884,7 @@
           // サブセクション見出し
           var grpHead = document.createElement('div');
           grpHead.className = 'detail-grp-head';
+          grpHead.id = 'detail-grp-' + g.cat;
           grpHead.setAttribute('data-cat', g.cat);
           grpHead.textContent = g.label;
           list.appendChild(grpHead);
@@ -849,7 +896,7 @@
             card.setAttribute('data-cat', d.cat || 'stage');
             card.style.cursor = 'pointer';
             card.innerHTML =
-              '<div class="detail-card__photo">📷 写真は準備中</div>' +
+              (d.img ? '<div class="detail-card__photo"><img src="' + d.img + '" alt="' + d.title + '" /></div>' : '') +
               '<div class="detail-card__body">' +
                 '<div class="detail-card__top">' +
                   '<span class="detail-card__badge">' + d.badge + '</span>' +
