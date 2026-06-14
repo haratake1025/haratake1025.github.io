@@ -317,9 +317,9 @@
   }
   .tt-grid{
     display:grid;
-    grid-template-columns:46px repeat(4, 116px);
-    grid-template-rows:34px repeat(24, 24px);
-    min-width:510px;
+    grid-template-columns:46px repeat(5, 116px);
+    grid-template-rows:34px repeat(28, 24px);
+    min-width:626px;
     gap:0;
     position:relative;
   }
@@ -331,7 +331,7 @@
     border-right:1.5px solid color-mix(in srgb,var(--ink) 16%, transparent);
   }
   .tt-timebg{
-    grid-column:1; grid-row:2/26;
+    grid-column:1; grid-row:2/30;
     position:sticky; left:0; z-index:3; background:var(--bg);
     border-right:1.5px solid color-mix(in srgb,var(--ink) 16%, transparent);
   }
@@ -343,8 +343,15 @@
   }
   .tt-head.h-stage{ grid-column:2; background:var(--stage); }
   .tt-head.h-food{ grid-column:3; background:var(--food); }
-  .tt-head.h-art{ grid-column:4; background:var(--art); }
-  .tt-head.h-relax{ grid-column:5; background:var(--relax); }
+  .tt-head.h-art{ grid-column:6; background:var(--art); }
+  .tt-head.h-relax{ grid-column:4/6; background:var(--relax); }
+  .ev.flea-slot{
+    background:color-mix(in srgb,var(--relax) 28%, #fff);
+    border:1.5px solid color-mix(in srgb,var(--relax) 50%, #fff);
+    color:color-mix(in srgb,var(--ink) 78%, var(--relax)); font-size:11.5px; font-weight:700;
+    align-items:center; text-align:center;
+    border-radius:6px; padding:2px 4px;
+  }
   .tt-time{
     grid-column:1;
     display:flex; align-items:flex-start; justify-content:flex-end;
@@ -412,6 +419,9 @@
   }
   .ev.brett-slot{
     font-size:11px; line-height:1.25; font-weight:800;
+    background:color-mix(in srgb,var(--relax) 28%, #fff);
+    border-color:color-mix(in srgb,var(--relax) 50%, #fff);
+    color:color-mix(in srgb,var(--ink) 78%, var(--relax));
   }
 
   /* ---------- map ---------- */
@@ -671,55 +681,70 @@
           <div class="tt-timebg" aria-hidden="true"></div>
 
           <!-- time labels (col 1, every 30min) -->
-          <div class="tt-time" style="grid-row:2">13:00</div>
-          <div class="tt-time" style="grid-row:4">13:30</div>
-          <div class="tt-time" style="grid-row:6">14:00</div>
-          <div class="tt-time" style="grid-row:8">14:30</div>
-          <div class="tt-time" style="grid-row:10">15:00</div>
-          <div class="tt-time" style="grid-row:12">15:30</div>
-          <div class="tt-time" style="grid-row:14">16:00</div>
-          <div class="tt-time" style="grid-row:16">16:30</div>
-          <div class="tt-time" style="grid-row:18">17:00</div>
-          <div class="tt-time" style="grid-row:20">17:30</div>
-          <div class="tt-time" style="grid-row:22">18:00</div>
-          <div class="tt-time" style="grid-row:24">18:30</div>
-          <div class="tt-time end" style="grid-row:25">19:00</div>
+          <div class="tt-time" style="grid-row:2">12:00</div>
+          <div class="tt-time" style="grid-row:4">12:30</div>
+          <div class="tt-time" style="grid-row:6">13:00</div>
+          <div class="tt-time" style="grid-row:8">13:30</div>
+          <div class="tt-time" style="grid-row:10">14:00</div>
+          <div class="tt-time" style="grid-row:12">14:30</div>
+          <div class="tt-time" style="grid-row:14">15:00</div>
+          <div class="tt-time" style="grid-row:16">15:30</div>
+          <div class="tt-time" style="grid-row:18">16:00</div>
+          <div class="tt-time" style="grid-row:20">16:30</div>
+          <div class="tt-time" style="grid-row:22">17:00</div>
+          <div class="tt-time" style="grid-row:24">17:30</div>
+          <div class="tt-time" style="grid-row:26">18:00</div>
+          <div class="tt-time" style="grid-row:28">18:30</div>
+          <div class="tt-time end" style="grid-row:29">19:00</div>
 
-          <!-- grid background lines (24 × 15min) -->
-          <div class="tt-lines" style="grid-column:2/6;grid-row:2/26" aria-hidden="true">
-            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          <!-- grid background lines (28 × 15min) -->
+          <div class="tt-lines" style="grid-column:2/7;grid-row:2/30" aria-hidden="true">
+            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
           </div>
 
           <!-- STAGE events (col 2) -->
-          <div class="ev c3 short" data-ev="open" style="grid-column:2;grid-row:6/7">🎀 開会式</div>
-          <div class="ev c2" data-ev="social" style="grid-column:2;grid-row:8/10">社交ダンス</div>
-          <div class="ev c4" data-ev="aco" style="grid-column:2;grid-row:11/13">好日屋上アコースティックLIVE</div>
-          <div class="ev c1" data-ev="dance" style="grid-column:2;grid-row:14/16">ネイバーズダンス部</div>
-          <div class="ev c5" data-ev="dj" style="grid-column:2;grid-row:17/21">DJ George<br />× ななみんフィットネス</div>
-          <div class="ev c6" data-ev="mr" style="grid-column:2;grid-row:22/24">ミスターコンテスト</div>
-          <div class="ev c3 short" data-ev="close" style="grid-column:2;grid-row:24/26">🎉 閉会式<br />＆写真撮影</div>
+          <div class="ev c3 short" data-ev="open" style="grid-column:2;grid-row:8/9">🎀 開会式</div>
+          <div class="ev c1" data-ev="dance" style="grid-column:2;grid-row:10/12">ネイバーズダンス部</div>
+          <div class="ev c4" data-ev="aco" style="grid-column:2;grid-row:13/15">好日屋上アコースティックLIVE</div>
+          <div class="ev c2" data-ev="social" style="grid-column:2;grid-row:16/18">社交ダンス</div>
+          <div class="ev c5" data-ev="dj" style="grid-column:2;grid-row:20/24">DJ George<br />× ななみんフィットネス</div>
+          <div class="ev c6" data-ev="mr" style="grid-column:2;grid-row:26/28">ミスターコンテスト</div>
+          <div class="ev c3 short" data-ev="close" style="grid-column:2;grid-row:28/30">🎉 閉会式<br />＆写真撮影</div>
 
           <!-- FOOD (col 3) -->
-          <div class="ev food food-main" data-ev="food" style="grid-column:3;grid-row:2/6">
+          <div class="ev food food-main" data-ev="food" style="grid-column:3;grid-row:6/10">
             <span class="adlabel">🍴 フードタイム</span>
             あおバーガー<br />カレー部<br />トーマス料理
           </div>
-          <div class="ev food food-req" data-ev="food" style="grid-column:3;grid-row:6/26">
+          <div class="ev food food-req" data-ev="food" style="grid-column:3;grid-row:10/30">
             <span class="reqlabel">14:00〜</span>
             リクエストに<br />応じて提供
           </div>
 
-          <!-- ART (col 4) all-day -->
-          <div class="ev allday art" data-ev="art" style="grid-column:4;grid-row:2/26">
+          <!-- ART (col 6) all-day -->
+          <div class="ev allday art" data-ev="art" style="grid-column:6;grid-row:2/30">
             <span class="adlabel">通し展示</span>
             あけみちゃん<br />あーりゃん
           </div>
 
-          <!-- RELAX (col 5) -->
-          <div class="ev relax-slot brett-slot" data-ev="brett" style="grid-column:5;grid-row:3/5">スパルタ<br />英会話教室</div>
-          <div class="ev relax-slot" data-ev="relax" style="grid-column:5;grid-row:6/7">ほぐしの満州</div>
-          <div class="ev relax-slot" data-ev="relax" style="grid-column:5;grid-row:10/11">ほぐしの満州</div>
-          <div class="ev relax-slot" data-ev="relax" style="grid-column:5;grid-row:14/15">ほぐしの満州</div>
+          <!-- RELAX sub-col (col 5): スパルタ英会話 -->
+          <div class="ev brett-slot" data-ev="brett" style="grid-column:5;grid-row:7/9">スパルタ<br />英会話教室</div>
+
+          <!-- RELAX (col 6): ほぐしの満州 -->
+          <!-- ほぐしの満州：12:00〜16:00 30分置き 全8枠 -->
+          <div class="ev relax-slot short" data-ev="relax" style="grid-column:4;grid-row:2/3">ほぐしの満州</div>
+          <div class="ev relax-slot short" data-ev="relax" style="grid-column:4;grid-row:4/5">ほぐしの満州</div>
+          <div class="ev relax-slot short" data-ev="relax" style="grid-column:4;grid-row:6/7">ほぐしの満州</div>
+          <div class="ev relax-slot short" data-ev="relax" style="grid-column:4;grid-row:8/9">ほぐしの満州</div>
+          <div class="ev relax-slot short" data-ev="relax" style="grid-column:4;grid-row:10/11">ほぐしの満州</div>
+          <div class="ev relax-slot short" data-ev="relax" style="grid-column:4;grid-row:12/13">ほぐしの満州</div>
+          <div class="ev relax-slot short" data-ev="relax" style="grid-column:4;grid-row:14/15">ほぐしの満州</div>
+          <div class="ev relax-slot short" data-ev="relax" style="grid-column:4;grid-row:16/17">ほぐしの満州</div>
+
+          <!-- FLEA MARKET (col 7): 13:00・15:00・17:00 各30分 -->
+          <div class="ev flea-slot" style="grid-column:5;grid-row:4/6">🛍️ フリマ</div>
+          <div class="ev flea-slot" style="grid-column:5;grid-row:18/20">🛍️ フリマ</div>
+          <div class="ev flea-slot" style="grid-column:5;grid-row:24/26">🛍️ フリマ</div>
         </div>
       </div>
     </section>
@@ -789,18 +814,18 @@
     (function(){
       // 各セッションの詳細データ。写真・出演者・ひとことは決まり次第ここを更新してください。
       var EV = {
-        open:   { badge:'🎀 ステージ', cat:'stage', time:'14:00〜14:15', title:'開会式',
+        open:   { badge:'🎀 ステージ', cat:'stage', time:'13:30〜13:45', title:'開会式',
                   by:'運営チーム（ぐっちー、りおちゃん、かさたろう）', desc:'いよいよ開幕！みんなで乾杯して、文化祭のスタートを盛り上げよう🎉' },
-        social: { badge:'🎤 ステージ', cat:'stage', time:'14:30〜15:00', title:'社交ダンス', img:'uploads/社交ダンス.jpg',
+        social: { badge:'🎤 ステージ', cat:'stage', time:'15:30〜16:00', title:'社交ダンス', img:'uploads/社交ダンス.jpg',
                   by:'出演者：りほちゃん、つねさん', desc:'華やかなステップで魅せる社交ダンス。飛び入り体験コーナーもあるかも💃' },
-        aco:    { badge:'🎸 ステージ', cat:'stage', time:'15:15〜15:45', title:'好日屋上アコースティックLIVE', img:'uploads/好日屋上.jpg',
+        aco:    { badge:'🎸 ステージ', cat:'stage', time:'14:45〜15:15', title:'好日屋上アコースティックLIVE', img:'uploads/好日屋上.jpg',
                   by:'出演者：うみ・ももちゃん・まゆちゃん・さっちゃま・かのくん', desc:'やさしい歌声とギターの音色で、ほっと一息つけるライブタイム🎶' },
-        dance:  { badge:'🕺 ステージ', cat:'stage', time:'16:00〜16:30', title:'ネイバーズダンス部', img:'uploads/ネイバーズダンス部.png',
+        dance:  { badge:'🕺 ステージ', cat:'stage', time:'14:00〜14:30', title:'ネイバーズダンス部', img:'uploads/ネイバーズダンス部.png',
                   by:'出演者：ネイバーズダンス部（ごうちゃん・りほちゃん・むぎちゃん・まりんちゃん・なっちゃん）', desc:'キレッキレのパフォーマンスでフロアを沸かせます！手拍子で応援してね👏' },
-        dj:     { badge:'🎧 ステージ', cat:'stage', time:'16:45〜17:45', title:'DJ George × ななみんフィットネス', img:'uploads/DJgerge.jpg',
-                  by:'出演者：DJ George / ななみん', desc:'DJ Georgeとななみんの夢のコラボ！みんなで踊って笑ってたのしもう🔥' },
+        dj:     { badge:'🎧 ステージ', cat:'stage', time:'16:30〜17:30', title:'DJ George × ななみんフィットネス', img:'uploads/DJgerge.jpg',
+                  by:'出演者：DJ George / ななみん', desc:'DJ Georgeとななみんの夢のコラボ！みんなで踊って笑ってたのしもう🔥 B\'zを愛するあの男もやってくる！？' },
         mr:     { badge:'🏆 ステージ', cat:'stage', time:'18:00〜18:30', title:'ミスターコンテスト', img:'uploads/ミスターコン.png',
-                  by:'出演者：ぐっちー、かさたろう、おおつかさん、せきさん、ゆうちゃみ、JP　他多数', desc:'ネイバーズのミスターを決める一大イベント！投票でお気に入りを応援しよう🏆' },
+                  by:'出演者：ぐっちー、かさたろう、おおつかさん、ゆうちゃみ、JP　他多数', desc:'ネイバーズのミスターを決める一大イベント！投票でお気に入りを応援しよう🏆' },
         close:  { badge:'🎉 ステージ', cat:'stage', time:'18:30〜19:00', title:'閉会式・写真撮影',
                   by:'主催チーム', desc:'一日の締めくくり。みんなで記念撮影してお開きです📸また会おうね！' },
         food_ao:    { badge:'🍔 フード', cat:'food', time:'13:00〜14:00 フードタイム（以降リクエスト対応）', title:'あおバーガー',
